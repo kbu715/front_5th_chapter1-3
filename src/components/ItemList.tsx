@@ -1,31 +1,42 @@
-import { useState } from "react";
+import { memo, useMemo, useState } from "react";
 import { renderLog } from "../utils";
-import { useAppContext } from "../context/app/useAppContext";
 
-interface Item {
+export interface Item {
   id: number;
   name: string;
   category: string;
   price: number;
 }
 
-export const ItemList: React.FC<{
+type Props = {
   items: Item[];
   onAddItemsClick: () => void;
-}> = ({ items, onAddItemsClick }) => {
+  theme: string;
+};
+
+export const ItemList = memo(({ items, onAddItemsClick, theme }: Props) => {
   renderLog("ItemList rendered");
   const [filter, setFilter] = useState("");
-  const { theme } = useAppContext();
 
-  const filteredItems = items.filter(
-    (item) =>
-      item.name.toLowerCase().includes(filter.toLowerCase()) ||
-      item.category.toLowerCase().includes(filter.toLowerCase()),
+  const filteredItems = useMemo(
+    () =>
+      items.filter(
+        (item) =>
+          item.name.toLowerCase().includes(filter.toLowerCase()) ||
+          item.category.toLowerCase().includes(filter.toLowerCase()),
+      ),
+    [items, filter],
   );
 
-  const totalPrice = filteredItems.reduce((sum, item) => sum + item.price, 0);
+  const totalPrice = useMemo(
+    () => filteredItems.reduce((sum, item) => sum + item.price, 0),
+    [filteredItems],
+  );
 
-  const averagePrice = Math.round(totalPrice / filteredItems.length) || 0;
+  const averagePrice = useMemo(
+    () => Math.round(totalPrice / filteredItems.length) || 0,
+    [totalPrice, filteredItems],
+  );
 
   return (
     <div className="mt-8">
@@ -65,4 +76,4 @@ export const ItemList: React.FC<{
       </ul>
     </div>
   );
-};
+});
