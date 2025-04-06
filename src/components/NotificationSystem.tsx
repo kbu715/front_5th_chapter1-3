@@ -1,6 +1,6 @@
-import { memo } from "react";
 import { renderLog } from "../utils";
 import type { Notification } from "../types/notification";
+import { memo } from "../@lib";
 
 type Props = {
   notifications: Notification[];

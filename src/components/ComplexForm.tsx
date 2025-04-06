@@ -1,8 +1,9 @@
-import { memo, useState } from "react";
-
+import { useState } from "react";
 import { renderLog } from "../utils";
 import type { Notification } from "../types/notification";
 import type { User } from "../types/user";
+import { memo } from "../@lib";
+
 type Props = {
   user: User | null;
   notifications: Notification[];

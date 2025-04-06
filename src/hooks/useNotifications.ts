@@ -1,5 +1,6 @@
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import type { Notification } from "../types/notification";
+import { useCallback } from "../@lib";
 
 // 알림 관련 로직
 export function useNotifications() {

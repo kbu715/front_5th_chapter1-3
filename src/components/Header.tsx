@@ -1,6 +1,6 @@
-import { memo } from "react";
 import { renderLog } from "../utils";
 import type { User } from "../types/user";
+import { memo } from "../@lib";
 
 type Props = {
   theme: string;

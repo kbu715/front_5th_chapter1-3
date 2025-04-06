@@ -1,8 +1,7 @@
 import { useState } from "react";
-
-import { useCallback } from "react";
 import { generateItems } from "../utils";
 import type { Item } from "../components/ItemList";
+import { useCallback } from "../@lib";
 
 // 아이템 관련 로직
 export function useItems() {

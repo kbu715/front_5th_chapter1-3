@@ -1,6 +1,5 @@
-import { useCallback } from "react";
-
 import { useState } from "react";
+import { useCallback } from "../@lib";
 
 // 테마 관련 로직
 export function useTheme() {

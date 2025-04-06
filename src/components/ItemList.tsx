@@ -1,5 +1,6 @@
-import { memo, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { renderLog } from "../utils";
+import { memo } from "../@lib";
 
 export interface Item {
   id: number;

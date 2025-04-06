@@ -1,7 +1,7 @@
-import { useCallback } from "react";
 import { useState } from "react";
 import type { User } from "../types/user";
 import type { Notification } from "../types/notification";
+import { useCallback } from "../@lib";
 
 // 인증 관련 로직
 export function useAuth(
